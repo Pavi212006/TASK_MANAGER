@@ -33,12 +33,22 @@ No package installation or backend server is required.
 
 The JavaScript keeps tasks in an array. Each task has an `id`, a `title`, and a `completed` boolean. When the user adds, completes, deletes, or clears tasks, the array is updated and saved as JSON in local storage. The interface is then rendered from that state. Stable IDs mean that deleting one task does not accidentally delete another task with the same title.
 
+## Regression tests
+
+Run the 8 logic-level regression tests with Node.js (no extra npm packages required):
+
+```bash
+node --test tests/task-manager-regression.test.cjs
+```
+
+The suite uses a mocked DOM to check adding tasks, blank-input rejection, completion persistence, duplicate-safe deletion, filtering, clearing completed tasks, migration of legacy saved tasks, and rendering HTML-like text safely. These are not full browser end-to-end or usability tests.
+
 ## Scope and limitations
 
 - Tasks are stored only in the current browser profile and website origin; they do not sync between devices.
 - Clearing browser storage may remove saved tasks.
 - This is a frontend learning project, not a multi-user or cloud-backed task service.
-- Automated browser tests have not yet been added.
+- Test success does not measure real-user productivity or prove a percentage reduction in time spent managing tasks.
 
 ## Suggested manual checks
 
