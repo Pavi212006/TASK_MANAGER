@@ -1,22 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple task manager that saves your tasks in this browser.">
     <title>Student Task Manager</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
+    <main class="container">
+        <header class="page-header">
+            <p class="eyebrow">STUDY SPACE</p>
+            <h1>Student Task Manager</h1>
+            <p class="subtitle">Make a plan. Take it one task at a time.</p>
+        </header>
 
-<div class="container">
-    <h1>Student Task Manager</h1>
+        <section class="task-panel" aria-labelledby="add-task-heading">
+            <h2 id="add-task-heading">Add a task</h2>
+            <form id="taskForm" class="input-section">
+                <label class="sr-only" for="taskInput">Task description</label>
+                <input
+                    type="text"
+                    id="taskInput"
+                    name="task"
+                    placeholder="e.g. Revise database normalization"
+                    maxlength="160"
+                    autocomplete="off"
+                    required
+                >
+                <button class="add-button" type="submit">Add task</button>
+            </form>
+            <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+        </section>
 
-    <div class="input-section">
-        <input type="text" id="taskInput" placeholder="Enter a task">
-        <button onclick="addTask()">Add</button>
-    </div>
+        <section class="task-panel" aria-labelledby="your-tasks-heading">
+            <div class="list-heading">
+                <div>
+                    <h2 id="your-tasks-heading">Your tasks</h2>
+                    <p id="taskSummary" class="task-summary">0 tasks · 0 completed</p>
+                </div>
+                <label class="filter-label" for="taskFilter">
+                    Show
+                    <select id="taskFilter">
+                        <option value="all">All tasks</option>
+                        <option value="active">Active</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </label>
+            </div>
+            <ul id="taskList" class="task-list" aria-label="Tasks"></ul>
+            <p id="emptyState" class="empty-state">Nothing here yet. Add your first task above.</p>
+            <button id="clearCompleted" class="text-button" type="button" hidden>Clear completed tasks</button>
+        </section>
 
-    <ul id="taskList"></ul>
-</div>
-
-<script src="script.js"></script>
+        <footer class="page-footer">
+            <p>Your tasks are saved in this browser using local storage.</p>
+        </footer>
+    </main>
 </body>
 </html>
