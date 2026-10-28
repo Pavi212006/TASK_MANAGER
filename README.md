@@ -1,51 +1,49 @@
 # Student Task Manager
 
-A simple task management web application built using HTML, CSS, and JavaScript.
+A lightweight browser-based task manager built with HTML, CSS, and vanilla JavaScript. It helps students keep a simple list of study and personal tasks without needing an account or backend server.
 
 ## Features
 
-- Add new tasks
-- Mark tasks as completed
-- Delete tasks
-- Store tasks using Local Storage
-- Simple and responsive user interface
+- Add tasks and reject empty or whitespace-only input
+- Mark tasks as active or completed
+- Filter the list by all, active, or completed tasks
+- Delete an individual task or clear all completed tasks
+- Persist task IDs, titles, and completion state in browser local storage
+- Migrate tasks saved by the earlier version of this project
+- Responsive layout with keyboard focus styles and accessible form labels
+- Render task titles as text rather than HTML
 
-## Technologies Used
+## Technologies
 
-- HTML
-- CSS
-- JavaScript
-- Browser Local Storage
+- **HTML5** for page structure and form controls
+- **CSS3** for responsive layout and styling
+- **JavaScript** for DOM updates, event handling, filtering, and state management
+- **Browser Local Storage** for persistence on the same browser and origin
 
-## Project Structure
+## Run locally
 
-```
-Student-Task-Manager/
-│
-├── index.html
-├── style.css
-├── script.js
-└── README.md
-```
+1. Clone or download this repository.
+2. Open the folder in VS Code.
+3. Open `index.html` in a browser, or use the Live Server extension.
+4. Add a task and refresh the page to confirm that saved tasks remain.
 
-## How to Run
+No package installation or backend server is required.
 
-1. Download or clone the repository.
-2. Open the project folder in VS Code.
-3. Open `index.html` using Live Server.
-4. Start adding and managing tasks.
+## How it works
 
-## Learning Outcomes
+The JavaScript keeps tasks in an array. Each task has an `id`, a `title`, and a `completed` boolean. When the user adds, completes, deletes, or clears tasks, the array is updated and saved as JSON in local storage. The interface is then rendered from that state. Stable IDs mean that deleting one task does not accidentally delete another task with the same title.
 
-- DOM Manipulation
-- Event Handling
-- Local Storage
-- Responsive UI Design
-- Frontend Development Fundamentals
+## Scope and limitations
 
-## Future Enhancements
+- Tasks are stored only in the current browser profile and website origin; they do not sync between devices.
+- Clearing browser storage may remove saved tasks.
+- This is a frontend learning project, not a multi-user or cloud-backed task service.
+- Automated browser tests have not yet been added.
 
-- Task editing functionality
-- Task categories and priorities
-- Due dates and reminders
-- Dark mode support
+## Suggested manual checks
+
+- Add a normal task and try submitting an empty task.
+- Add two tasks with the same title, then delete only one.
+- Mark a task complete, refresh the page, and check that its state persists.
+- Try each filter and clear completed tasks.
+- Test the layout at mobile and desktop widths.
